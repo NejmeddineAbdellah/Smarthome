@@ -23,14 +23,38 @@ namespace p2
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            Form1 f = new Form1();
-            f.zoneh = Convert.ToInt16(textBox1.Text);
-            f.zonew = Convert.ToInt16(textBox2.Text);
-            f.zonename = comboBox2.Text;
-            f.Show();
-            
            
-            f.getZone();
+           
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
