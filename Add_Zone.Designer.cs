@@ -110,6 +110,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBox2);
@@ -118,7 +119,7 @@
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
             this.Name = "Add_Zone";
-            this.Size = new System.Drawing.Size(232, 195);
+            this.Size = new System.Drawing.Size(230, 193);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -32,7 +32,6 @@ namespace p2
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel3 = new System.Windows.Forms.Panel();
             this.add_Zone1 = new p2.Add_Zone();
-            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CirclePictureBox12 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -75,40 +74,24 @@ namespace p2
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.add_Zone1);
-            this.panel3.Controls.Add(this.guna2TextBox1);
             this.panel3.Controls.Add(this.panel7);
-            this.panel3.Location = new System.Drawing.Point(120, 87);
+            this.panel3.Location = new System.Drawing.Point(79, 107);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(937, 533);
+            this.panel3.Size = new System.Drawing.Size(1025, 523);
             this.panel3.TabIndex = 0;
+            this.panel3.DragDrop += new System.Windows.Forms.DragEventHandler(this.panel3_DragDrop);
+            this.panel3.DragEnter += new System.Windows.Forms.DragEventHandler(this.panel3_DragEnter);
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
             // 
             // add_Zone1
             // 
-            this.add_Zone1.Location = new System.Drawing.Point(675, -1);
+            this.add_Zone1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.add_Zone1.Location = new System.Drawing.Point(775, -1);
             this.add_Zone1.Name = "add_Zone1";
-            this.add_Zone1.Size = new System.Drawing.Size(255, 195);
+            this.add_Zone1.Size = new System.Drawing.Size(248, 195);
             this.add_Zone1.TabIndex = 2;
-            // 
-            // guna2TextBox1
-            // 
-            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.guna2TextBox1.DefaultText = "";
-            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(396, 15);
-            this.guna2TextBox1.Name = "guna2TextBox1";
-            this.guna2TextBox1.PasswordChar = '\0';
-            this.guna2TextBox1.PlaceholderText = "";
-            this.guna2TextBox1.SelectedText = "";
-            this.guna2TextBox1.Size = new System.Drawing.Size(200, 36);
-            this.guna2TextBox1.TabIndex = 1;
             // 
             // panel7
             // 
@@ -153,6 +136,7 @@ namespace p2
             this.guna2CirclePictureBox12.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.guna2CirclePictureBox12.TabIndex = 5;
             this.guna2CirclePictureBox12.TabStop = false;
+            this.guna2CirclePictureBox12.MouseDown += new System.Windows.Forms.MouseEventHandler(this.guna2CirclePictureBox12_MouseDown);
             // 
             // guna2CirclePictureBox6
             // 
@@ -167,6 +151,7 @@ namespace p2
             this.guna2CirclePictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.guna2CirclePictureBox6.TabIndex = 4;
             this.guna2CirclePictureBox6.TabStop = false;
+            this.guna2CirclePictureBox6.MouseDown += new System.Windows.Forms.MouseEventHandler(this.guna2CirclePictureBox6_MouseDown);
             // 
             // guna2CirclePictureBox5
             // 
@@ -181,6 +166,7 @@ namespace p2
             this.guna2CirclePictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.guna2CirclePictureBox5.TabIndex = 3;
             this.guna2CirclePictureBox5.TabStop = false;
+            this.guna2CirclePictureBox5.MouseDown += new System.Windows.Forms.MouseEventHandler(this.guna2CirclePictureBox5_MouseDown);
             // 
             // guna2CirclePictureBox4
             // 
@@ -195,6 +181,7 @@ namespace p2
             this.guna2CirclePictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.guna2CirclePictureBox4.TabIndex = 2;
             this.guna2CirclePictureBox4.TabStop = false;
+            this.guna2CirclePictureBox4.MouseDown += new System.Windows.Forms.MouseEventHandler(this.guna2CirclePictureBox4_MouseDown);
             // 
             // guna2CirclePictureBox3
             // 
@@ -209,6 +196,7 @@ namespace p2
             this.guna2CirclePictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.guna2CirclePictureBox3.TabIndex = 1;
             this.guna2CirclePictureBox3.TabStop = false;
+            this.guna2CirclePictureBox3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.guna2CirclePictureBox3_MouseDown);
             // 
             // guna2CirclePictureBox2
             // 
@@ -223,6 +211,7 @@ namespace p2
             this.guna2CirclePictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.guna2CirclePictureBox2.TabIndex = 0;
             this.guna2CirclePictureBox2.TabStop = false;
+            this.guna2CirclePictureBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.guna2CirclePictureBox2_MouseDown);
             // 
             // guna2CustomGradientPanel2
             // 
@@ -312,9 +301,9 @@ namespace p2
             this.guna2CustomGradientPanel4.BorderRadius = 25;
             this.guna2CustomGradientPanel4.Controls.Add(this.guna2PictureBox2);
             this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(160)))), ((int)(((byte)(114)))), ((int)(((byte)(190)))));
-            this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(1078, 17);
+            this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(1109, 17);
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
-            this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(122, 53);
+            this.guna2CustomGradientPanel4.Size = new System.Drawing.Size(91, 53);
             this.guna2CustomGradientPanel4.TabIndex = 18;
             // 
             // guna2PictureBox2
@@ -323,7 +312,7 @@ namespace p2
             this.guna2PictureBox2.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(0, 1);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(0, 0);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(57, 53);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -345,7 +334,7 @@ namespace p2
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.ImageSize = new System.Drawing.Size(40, 40);
-            this.guna2Button1.Location = new System.Drawing.Point(992, 37);
+            this.guna2Button1.Location = new System.Drawing.Point(1039, 57);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(64, 52);
             this.guna2Button1.TabIndex = 17;
@@ -356,7 +345,7 @@ namespace p2
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1182, 631);
+            this.ClientSize = new System.Drawing.Size(1182, 637);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2CustomGradientPanel4);
@@ -409,7 +398,6 @@ namespace p2
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox12;
-        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
         private Add_Zone add_Zone1;
     }
 }

@@ -615,7 +615,7 @@ namespace p2
         }
         public void getZone()
         {
-            guna2TextBox1.Text = zonename;
+
             if (zonew > 0 && zoneh > 0 && zonename != "")
             {
                 PictureBox p1 = new PictureBox();
@@ -679,6 +679,77 @@ namespace p2
             }
         }
 
+        private void guna2CirclePictureBox2_MouseDown(object sender, MouseEventArgs e)
+        {
+            guna2CirclePictureBox2.DoDragDrop(guna2CirclePictureBox2.Image,DragDropEffects.Copy);
+        }
+        private void guna2CirclePictureBox6_MouseDown(object sender, MouseEventArgs e)
+        {
+            guna2CirclePictureBox6.DoDragDrop(guna2CirclePictureBox6.Image, DragDropEffects.Copy);
+
+        }
+        private void guna2CirclePictureBox5_MouseDown(object sender, MouseEventArgs e)
+        {
+            guna2CirclePictureBox5.DoDragDrop(guna2CirclePictureBox5.Image, DragDropEffects.Copy);
+
+        }
+
+        private void guna2CirclePictureBox4_MouseDown(object sender, MouseEventArgs e)
+        {
+            guna2CirclePictureBox4.DoDragDrop(guna2CirclePictureBox4.Image, DragDropEffects.Copy);
+
+        }
+
+        private void guna2CirclePictureBox3_MouseDown(object sender, MouseEventArgs e)
+        {
+            guna2CirclePictureBox3.DoDragDrop(guna2CirclePictureBox3.Image, DragDropEffects.Copy);
+
+        }
+
+        private void guna2CirclePictureBox12_MouseDown(object sender, MouseEventArgs e)
+        {
+            guna2CirclePictureBox12.DoDragDrop(guna2CirclePictureBox12.Image, DragDropEffects.Copy);
+
+        }
+        private void panel3_MouseDown(object sender, MouseEventArgs e)
+        {       
+                ((Panel)sender).DoDragDrop(((PictureBox)sender).Image, DragDropEffects.Copy);
+           
+        }
+
+        private void panel3_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.Bitmap))
+            {
+                e.Effect = DragDropEffects.Copy;
+
+            }
+        }
+
+        private void panel3_DragDrop(object sender, DragEventArgs e)
+        {
+            panelN++;
+            myControle = new Panel();
+            Image getpic = (Bitmap)e.Data.GetData(DataFormats.Bitmap);
+            
+            myControle.Location = new Point(300, 200);
+            myControle.Size = new Size(64, 64);
+            myControle.Text = (panelN).ToString();
+            myControle.Click += b_Click;
+            myControle.BackgroundImage = getpic;
+            myControle.BackgroundImageLayout = ImageLayout.Center;
+            myControle.BackColor = Color.Transparent;
+            myControle.ForeColor = Color.Transparent;
+            myControle.MouseDown += new MouseEventHandler(myContrl_MouseDown);
+            myControle.MouseMove += new MouseEventHandler(myContrl_MouseMove);
+            myControle.MouseUp += new MouseEventHandler(myContrl_MMouseUp);
+            panel3.Controls.Add(myControle);
+            panels.Add(myControle);
+            myControle.BringToFront();
+
+            
+           // panel3.BackgroundImage = getpic;
+        }
 
 
     }
