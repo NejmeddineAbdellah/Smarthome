@@ -4,6 +4,7 @@ using p2.Services;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace p2
     public partial class Form1 : Form
     {
         HomeService homeService = new HomeService();
+        ZoneService zoneService = new ZoneService();    
 
         Panel myControle;
         Panel b;
@@ -22,10 +24,11 @@ namespace p2
         List<Panel> panels = new List<Panel>();
         private static int panelN = 1;
         private List<home> homeList;
+        private List<Zone> zoneList;
         private static int x = 0;
         private static int y = 0;
-        private static int xhome = 1000;
-        private static int yhome = 1500;
+        private static int xhome = 2000;
+        private static int yhome = 2000;
         private static int xzone = 1;
         private static int yzone = 1;
 
@@ -38,7 +41,7 @@ namespace p2
             InitializeComponent();
             initExitSwitch();
             initCapt();
-
+            initZone();
         }
 
 
@@ -66,9 +69,59 @@ namespace p2
             }
 
         }
+        private void initZone()
+        {
+            int newy = 0;
+            int newx = 0;
+            PictureBox pictureBox1 = new PictureBox();  
+            zoneList = ZoneService.afficher();
+            foreach (Zone item in zoneList)
+            {
+                pictureBox1 = new PictureBox();
+                pictureBox1.Size = new Size(item.Xzone, item.Yzone);
+                pictureBox1.Location = new Point(newy, item.Location_x);
+                //pictureBox1.Text = (panelN).ToString();
+                pictureBox1.Name = item.NameZone;
+                //myControle.BackColor = Color.Transparent;
+                //myControle.Click += b_Click;
+                //changeIcon(myControle, item.Status);
+                newx += item.Xzone;
+
+                switch (pictureBox1.Name)
+                {
+
+                    case "Bedroom":
+                        pictureBox1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bedroom.jpg");
+                        break;
+                    case "Kitchen":
+                        pictureBox1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Kitchen.jpg");
+                        break;
+                    case "LivingRoom":
+                        pictureBox1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/LivingRoom.jpg");
+                        break;
+                    case "Bathroom":
+                        pictureBox1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bathroom.jpg");
+                        break;
+                    default:
+                        break;
+
+                }
+                pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+                panel3.AutoScroll = true;
+                // myControle.MouseDown += new MouseEventHandler(myContrl_MouseDown);
+                //myControle.MouseMove += new MouseEventHandler(myContrl_MouseMove);
+                //myControle.MouseUp += new MouseEventHandler(myContrl_MMouseUp);
+                //panel3.Location = new Point(79, 107);
+                panel3.Controls.Add(pictureBox1);
+                //panelN++;
+            }
+
+        }
+
         private void initExitSwitch()
         {
             panel7.Click += ExitSwitch;
+            homeService.killSwitch();
         }
 
        /* private void button1_Click(object sender, EventArgs e)
@@ -168,10 +221,10 @@ namespace p2
             if (b != null)
             {
                 bool exist = homeService.AfficherParIndex(int.Parse(b.Text));
-                /* if (exist == false)
-                     //panel6.Visible = true;
+                 if (exist == false)
+                     push.Visible = true;
                  else
-                     checkStatus(b);*/
+                     checkStatus(b);
             }
         }
 
@@ -432,12 +485,12 @@ namespace p2
             if (dialogClose == DialogResult.OK)
             {
                 b.BackgroundImage = Properties.Resources.exit__1_;
-
                 panel3.Controls.Clear();
                 panels.Clear();
                 //if (homeService.killSwitch())
                 // this.Close();
             }
+            initZone();
         }
 
         private void panel3_Paint(object sender, PaintEventArgs e)
@@ -658,11 +711,13 @@ namespace p2
 
 
                 MySqlCommand cmd = Connection.getMySqlCommand();
-                cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone)" +
-                    "VALUES(@nom_zone, @x_zone,@y_zone)";
+                cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone,location_x,location_y)" +
+                    "VALUES(@nom_zone, @x_zone,@y_zone,@location_x,@location_y)";
                 cmd.Parameters.AddWithValue("@nom_zone", comboBox2.Text);
-                cmd.Parameters.AddWithValue("@x_zone", xzone);
-                cmd.Parameters.AddWithValue("@y_zone", yzone);
+                cmd.Parameters.AddWithValue("@x_zone",Convert.ToInt32(textBox2.Text));
+                cmd.Parameters.AddWithValue("@y_zone",Convert.ToInt32(textBox1.Text));
+                cmd.Parameters.AddWithValue("@location_x", x);
+                cmd.Parameters.AddWithValue("@location_y", y);
                 cmd.ExecuteNonQuery();
 
             }
@@ -836,7 +891,7 @@ namespace p2
                 panel3.Controls.Remove(panels.Last());
                 panels.RemoveAt(panelN - 2);
                 panelN--;
-                // panel6.Visible = false;
+                push.Visible = false;
             }
         }
 

@@ -103,7 +103,9 @@
     <Compile Include="Saveform.Designer.cs">
       <DependentUpon>Saveform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Services\ZoneServices.cs" />
     <Compile Include="Services\HomeService.cs" />
+    <Compile Include="Zone.cs" />
     <EmbeddedResource Include="Add_Zone.resx">
       <DependentUpon>Add_Zone.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +149,7 @@
     <None Include="icons\connect.png" />
     <Content Include="icons\Bathroom.jpg" />
     <Content Include="icons\Bedroom.jpg" />
+    <Content Include="icons\broom %288%29.png" />
     <Content Include="icons\door %281%29.png" />
     <Content Include="icons\door.png" />
     <None Include="icons\exit %281%29.png" />

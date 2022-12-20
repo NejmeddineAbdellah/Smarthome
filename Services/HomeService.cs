@@ -143,8 +143,8 @@ namespace p2.Services
         public  bool killSwitch()
         {
             MySqlCommand cmd = Connection.getMySqlCommand();
-            cmd.CommandText = "delete  from home where name != 'fridge'";
-            cmd.ExecuteNonQuery();
+            cmd.CommandText = "DELETE * FROM home";
+            cmd.ExecuteScalar();
             return true;
         }
     }

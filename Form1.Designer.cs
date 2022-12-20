@@ -39,7 +39,6 @@ namespace p2
             this.label1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2CirclePictureBox12 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.guna2CirclePictureBox6 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
@@ -60,6 +59,7 @@ namespace p2
             this.Eteindre = new System.Windows.Forms.Button();
             this.push = new System.Windows.Forms.Button();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel3.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.guna2CustomGradientPanel1.SuspendLayout();
@@ -86,7 +86,6 @@ namespace p2
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.guna2Panel1);
-            this.panel3.Controls.Add(this.panel7);
             this.panel3.Location = new System.Drawing.Point(79, 107);
             this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
@@ -180,18 +179,6 @@ namespace p2
             this.textBox1.Size = new System.Drawing.Size(111, 20);
             this.textBox1.TabIndex = 32;
             // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.Transparent;
-            this.panel7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel7.BackgroundImage")));
-            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel7.Location = new System.Drawing.Point(49, 422);
-            this.panel7.Margin = new System.Windows.Forms.Padding(2);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(62, 65);
-            this.panel7.TabIndex = 0;
-            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
-            // 
             // guna2CustomGradientPanel1
             // 
             this.guna2CustomGradientPanel1.BorderRadius = 50;
@@ -206,7 +193,7 @@ namespace p2
             this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.SystemColors.HotTrack;
             this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.SystemColors.HotTrack;
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.SystemColors.HotTrack;
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 133);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(0, 106);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(74, 465);
             this.guna2CustomGradientPanel1.TabIndex = 3;
@@ -436,7 +423,7 @@ namespace p2
             this.allumer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.allumer.ForeColor = System.Drawing.Color.White;
             this.allumer.Image = global::p2.Properties.Resources.switch_on;
-            this.allumer.Location = new System.Drawing.Point(529, 56);
+            this.allumer.Location = new System.Drawing.Point(632, 56);
             this.allumer.Margin = new System.Windows.Forms.Padding(2);
             this.allumer.Name = "allumer";
             this.allumer.Size = new System.Drawing.Size(81, 46);
@@ -451,7 +438,7 @@ namespace p2
             this.Eteindre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Eteindre.ForeColor = System.Drawing.Color.White;
             this.Eteindre.Image = global::p2.Properties.Resources.switch_off;
-            this.Eteindre.Location = new System.Drawing.Point(635, 56);
+            this.Eteindre.Location = new System.Drawing.Point(717, 56);
             this.Eteindre.Margin = new System.Windows.Forms.Padding(2);
             this.Eteindre.Name = "Eteindre";
             this.Eteindre.Size = new System.Drawing.Size(80, 46);
@@ -471,6 +458,7 @@ namespace p2
             this.push.TabIndex = 21;
             this.push.Text = "Enregistrer";
             this.push.UseVisualStyleBackColor = false;
+            this.push.Visible = false;
             this.push.Click += new System.EventHandler(this.push_Click);
             // 
             // guna2TextBox1
@@ -484,13 +472,25 @@ namespace p2
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(378, 65);
+            this.guna2TextBox1.Location = new System.Drawing.Point(380, 57);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PasswordChar = '\0';
             this.guna2TextBox1.PlaceholderText = "";
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(200, 36);
             this.guna2TextBox1.TabIndex = 22;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.Transparent;
+            this.panel7.BackgroundImage = global::p2.Properties.Resources.exit;
+            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel7.Location = new System.Drawing.Point(11, 576);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(60, 54);
+            this.panel7.TabIndex = 0;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
             // Form1
             // 
@@ -499,6 +499,7 @@ namespace p2
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1182, 637);
             this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.panel7);
             this.Controls.Add(this.push);
             this.Controls.Add(this.allumer);
             this.Controls.Add(this.Eteindre);
@@ -539,7 +540,6 @@ namespace p2
 
         #endregion
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel7;
         private Guna.UI2.WinForms.Guna2CustomGradientPanel guna2CustomGradientPanel1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox6;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox5;
@@ -568,6 +568,7 @@ namespace p2
         private System.Windows.Forms.Button Eteindre;
         private System.Windows.Forms.Button push;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private System.Windows.Forms.Panel panel7;
     }
 }
 
