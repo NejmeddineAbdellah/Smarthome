@@ -21,7 +21,6 @@ namespace p2
         public static Panel panelbg;
         List<Panel> panels = new List<Panel>();
         private static int panelN = 1;
-        private CheckBox check;
         private List<home> homeList;
         private static int x = 0;
         private static int y = 0;
@@ -39,7 +38,6 @@ namespace p2
             InitializeComponent();
             initExitSwitch();
             initCapt();
-            //add_Zone1.Hide();
 
         }
 
@@ -51,7 +49,7 @@ namespace p2
             foreach (home item in homeList)
             {
                 myControle = new Panel();
-                myControle.Location = new Point(item.X, item.Y);
+                myControle.Location = new Point(item.X- 79, item.Y-107);
                 myControle.Size = new Size(64, 64);
                 myControle.Text = (panelN).ToString();
                 myControle.Name = item.Name;
@@ -62,26 +60,10 @@ namespace p2
                 myControle.MouseDown += new MouseEventHandler(myContrl_MouseDown);
                 myControle.MouseMove += new MouseEventHandler(myContrl_MouseMove);
                 myControle.MouseUp += new MouseEventHandler(myContrl_MMouseUp);
+                //panel3.Location = new Point(79, 107);
                 panel3.Controls.Add(myControle);
                 panelN++;
             }
-
-        }
-        private void initFridge()
-        {
-            myControle = new Panel();
-            myControle.Location = new Point(530, 500);
-            myControle.Size = new Size(64, 64);
-            myControle.Text = (panelN).ToString();
-            myControle.Name = string.Format("Fridge1");
-            myControle.BackColor = Color.Transparent;
-            myControle.Click += b_Click;
-            myControle.BackgroundImage = Properties.Resources.fridge;
-            myControle.BackgroundImageLayout = ImageLayout.Stretch;
-            myControle.MouseDown += new MouseEventHandler(myContrl_MouseDown);
-            myControle.MouseMove += new MouseEventHandler(myContrl_MouseMove);
-            myControle.MouseUp += new MouseEventHandler(myContrl_MMouseUp);
-            panel3.Controls.Add(myControle);
 
         }
         private void initExitSwitch()
@@ -89,7 +71,7 @@ namespace p2
             panel7.Click += ExitSwitch;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       /* private void button1_Click(object sender, EventArgs e)
         {
             panelN++;
             myControle = new Panel();
@@ -121,6 +103,7 @@ namespace p2
                     checkBox7.Checked = false;
                     checkBox8.Checked = false;
                     checkBox9.Checked = false;
+                    myControle.Name = string.Format("frigde {0}", panelN);
                     myControle.Name = string.Format("lamp {0}", panelN);
                 }
                 else if (checkBox7.Checked)
@@ -131,6 +114,8 @@ namespace p2
                     checkBox2.Checked = false;
                     checkBox8.Checked = false;
                     checkBox9.Checked = false;
+                    myControle.Name = string.Format("frigde {0}", panelN);
+                    myControle.Name = string.Format("lamp {0}", panelN);
                     myControle.Name = string.Format("ac {0}", panelN);
                 }
                 else if (checkBox8.Checked)
@@ -141,6 +126,9 @@ namespace p2
                     checkBox7.Checked = false;
                     checkBox2.Checked = false;
                     checkBox9.Checked = false;
+                    myControle.Name = string.Format("frigde {0}", panelN);
+                    myControle.Name = string.Format("lamp {0}", panelN);
+                    myControle.Name = string.Format("ac {0}", panelN);
                     myControle.Name = string.Format("router {0}", panelN);
                 }
                 else if (checkBox9.Checked)
@@ -151,9 +139,13 @@ namespace p2
                     checkBox7.Checked = false;
                     checkBox8.Checked = false;
                     checkBox9.Checked = false;
+                    myControle.Name = string.Format("frigde {0}", panelN);
+                    myControle.Name = string.Format("lamp {0}", panelN);
+                    myControle.Name = string.Format("ac {0}", panelN);
+                    myControle.Name = string.Format("router {0}", panelN);
                     myControle.Name = string.Format("tv {0}", panelN);
                 }*/
-            myControle.Location = new Point(300, 200);
+         /*   myControle.Location = new Point(300, 200);
             myControle.Size = new Size(64, 64);
             myControle.Text = (panelN).ToString();
             myControle.Click += b_Click;
@@ -168,7 +160,7 @@ namespace p2
             myControle.BringToFront();
             //removeButton.Enabled = true;
 
-        }
+        }*/
 
         void b_Click(object sender, EventArgs e)
         {
@@ -456,145 +448,145 @@ namespace p2
         private void button2_Click_1(object sender, EventArgs e)
         {
 
-           /* PictureBox p1 = new PictureBox();
-            p1.Padding = new Padding(5, 5, 5, 5);
-            //  string zone_name =Convert.ToString(comboBox2.Text);
-            /*  switch (zone_name)
-              {
+            /* PictureBox p1 = new PictureBox();
+             p1.Padding = new Padding(5, 5, 5, 5);
+             //  string zone_name =Convert.ToString(comboBox2.Text);
+             /*  switch (zone_name)
+               {
 
-                  case "Bedroom":
-                      p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bedroom.jpg");
-                      break;
-                  case "Kitchen":
-                      p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Kitchen.jpg");
-                      break;
-                  case "LivingRoom":
-                      p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/LivingRoom.jpg");
-                      break;
-                  case "Bathroom":
-                      p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bathroom.jpg");
-                      break;
+                   case "Bedroom":
+                       p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bedroom.jpg");
+                       break;
+                   case "Kitchen":
+                       p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Kitchen.jpg");
+                       break;
+                   case "LivingRoom":
+                       p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/LivingRoom.jpg");
+                       break;
+                   case "Bathroom":
+                       p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bathroom.jpg");
+                       break;
 
 
-                  default:
-                      break;
-              }*/
+                   default:
+                       break;
+               }*/
 
             //p1.SizeMode = PictureBoxSizeMode.StretchImage;
             /*    p1.Width = Convert.ToInt32(textBox2.Text);
                 p1.Height = Convert.ToInt32(textBox1.Text);*/
 
-           /* if (xzone < xhome && yzone < yhome)
-            {
-                if (x + p1.Width > panel3.Width)
-                {
-                    y += p1.Height;
-                    yzone += p1.Height;
-                    x = 0;
-                }
+            /* if (xzone < xhome && yzone < yhome)
+             {
+                 if (x + p1.Width > panel3.Width)
+                 {
+                     y += p1.Height;
+                     yzone += p1.Height;
+                     x = 0;
+                 }
 
-                p1.Location = new Point(x, y);
-                x += p1.Width;
-                xzone += p1.Width;
-            }
-            else
-            {
-                MessageBox.Show("vous avez depasser la surface limit");
-            }
-
-
-
-            panel3.Controls.Add(p1);
-            p1.SendToBack();
-
-            panel3.AutoScroll = true;
-
-            MySqlCommand cmd = Connection.getMySqlCommand();
-            cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone)" +
-                "VALUES(@nom_zone, @x_zone,@y_zone)";
-            //  cmd.Parameters.AddWithValue("@nom_zone", comboBox2.Text);
-            cmd.Parameters.AddWithValue("@x_zone", x);
-            cmd.Parameters.AddWithValue("@y_zone", y);
-            cmd.ExecuteNonQuery();
-
-        }
-
-        private void guna2PictureBox2_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void guna2CircleButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
-        {
-            /*
-                        PictureBox p1 = new PictureBox();
-                        p1.Padding = new Padding(5, 5, 5, 5);
-                        string zone_name = zonename;
-                        switch (zone_name)
-                        {
-
-                            case "Bedroom":
-                                p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bedroom.jpg");
-                                break;
-                            case "Kitchen":
-                                p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Kitchen.jpg");
-                                break;
-                            case "LivingRoom":
-                                p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/LivingRoom.jpg");
-                                break;
-                            case "Bathroom":
-                                p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bathroom.jpg");
-                                break;
-                            default:
-                                break;
-                        }
-
-                        p1.SizeMode = PictureBoxSizeMode.StretchImage;
-                        p1.Width = zonew;
-                        p1.Height = zoneh;
-
-                        if (xzone < xhome && yzone < yhome)
-                        {
-                            if (x + p1.Width > panel3.Width)
-                            {
-                                y += p1.Height;
-                                yzone += p1.Height;
-                                x = 0;
-                            }
-
-                            p1.Location = new Point(x, y);
-                            x += p1.Width;
-                            xzone += p1.Width;
-                        }
-                        else
-                        {
-                            MessageBox.Show("vous avez depasser la surface limit");
-                        }
-
-                        panelbg.Controls.Add(p1);
-                       // panel3.Controls.Add(p1);
-                        panel3.AutoScroll = true;
-                        p1.SendToBack();
-                        panel3.BackgroundImage = panelbg.BackgroundImage;
+                 p1.Location = new Point(x, y);
+                 x += p1.Width;
+                 xzone += p1.Width;
+             }
+             else
+             {
+                 MessageBox.Show("vous avez depasser la surface limit");
+             }
 
 
 
-                        MySqlCommand cmd = Connection.getMySqlCommand();
-                        cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone)" +
-                            "VALUES(@nom_zone, @x_zone,@y_zone)";
-                        cmd.Parameters.AddWithValue("@nom_zone", zonename);
-                        cmd.Parameters.AddWithValue("@x_zone", x);
-                        cmd.Parameters.AddWithValue("@y_zone", y);
-                        cmd.ExecuteNonQuery();*/
+             panel3.Controls.Add(p1);
+             p1.SendToBack();
+
+             panel3.AutoScroll = true;
+
+             MySqlCommand cmd = Connection.getMySqlCommand();
+             cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone)" +
+                 "VALUES(@nom_zone, @x_zone,@y_zone)";
+             //  cmd.Parameters.AddWithValue("@nom_zone", comboBox2.Text);
+             cmd.Parameters.AddWithValue("@x_zone", x);
+             cmd.Parameters.AddWithValue("@y_zone", y);
+             cmd.ExecuteNonQuery();
+
+         }
+
+         private void guna2PictureBox2_Click(object sender, EventArgs e)
+         {
+             Application.Exit();
+         }
+
+         private void guna2CircleButton1_Click(object sender, EventArgs e)
+         {
+
+         }
+
+         private void guna2Button1_Click(object sender, EventArgs e)
+         {
+         }
+
+         private void guna2GradientButton1_Click(object sender, EventArgs e)
+         {
+             /*
+                         PictureBox p1 = new PictureBox();
+                         p1.Padding = new Padding(5, 5, 5, 5);
+                         string zone_name = zonename;
+                         switch (zone_name)
+                         {
+
+                             case "Bedroom":
+                                 p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bedroom.jpg");
+                                 break;
+                             case "Kitchen":
+                                 p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Kitchen.jpg");
+                                 break;
+                             case "LivingRoom":
+                                 p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/LivingRoom.jpg");
+                                 break;
+                             case "Bathroom":
+                                 p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bathroom.jpg");
+                                 break;
+                             default:
+                                 break;
+                         }
+
+                         p1.SizeMode = PictureBoxSizeMode.StretchImage;
+                         p1.Width = zonew;
+                         p1.Height = zoneh;
+
+                         if (xzone < xhome && yzone < yhome)
+                         {
+                             if (x + p1.Width > panel3.Width)
+                             {
+                                 y += p1.Height;
+                                 yzone += p1.Height;
+                                 x = 0;
+                             }
+
+                             p1.Location = new Point(x, y);
+                             x += p1.Width;
+                             xzone += p1.Width;
+                         }
+                         else
+                         {
+                             MessageBox.Show("vous avez depasser la surface limit");
+                         }
+
+                         panelbg.Controls.Add(p1);
+                        // panel3.Controls.Add(p1);
+                         panel3.AutoScroll = true;
+                         p1.SendToBack();
+                         panel3.BackgroundImage = panelbg.BackgroundImage;
+
+
+
+                         MySqlCommand cmd = Connection.getMySqlCommand();
+                         cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone)" +
+                             "VALUES(@nom_zone, @x_zone,@y_zone)";
+                         cmd.Parameters.AddWithValue("@nom_zone", zonename);
+                         cmd.Parameters.AddWithValue("@x_zone", x);
+                         cmd.Parameters.AddWithValue("@y_zone", y);
+                         cmd.ExecuteNonQuery();*/
 
         }
 
@@ -615,104 +607,118 @@ namespace p2
         }
         public void getZone()
         {
-             if (yzone > 0 && xzone > 0 && comboBox2.Text != "")
-             {
+            if (yzone > 0 && xzone > 0 && comboBox2.Text != "")
+            {
 
-                 PictureBox p1 = new PictureBox();
-                 p1.Padding = new Padding(5, 5, 5, 5);
-                 string zone_name = comboBox2.Text;
-                 switch (zone_name)
-                 {
+                PictureBox p1 = new PictureBox();
+                p1.Padding = new Padding(5, 5, 5, 5);
+                string zone_name = comboBox2.Text;
+                switch (zone_name)
+                {
 
-                     case "Bedroom":
-                         p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bedroom.jpg");
-                         break;
-                     case "Kitchen":
-                         p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Kitchen.jpg");
-                         break;
-                     case "LivingRoom":
-                         p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/LivingRoom.jpg");
-                         break;
-                     case "Bathroom":
-                         p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bathroom.jpg");
-                         break;
-                     default:
-                         break;
-                 }
+                    case "Bedroom":
+                        p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bedroom.jpg");
+                        break;
+                    case "Kitchen":
+                        p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Kitchen.jpg");
+                        break;
+                    case "LivingRoom":
+                        p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/LivingRoom.jpg");
+                        break;
+                    case "Bathroom":
+                        p1.Image = Image.FromFile("C:/Users/Nejm/source/repos/p2-master/icons/Bathroom.jpg");
+                        break;
+                    default:
+                        break;
+                }
 
-                 p1.SizeMode = PictureBoxSizeMode.StretchImage;
-                 p1.Width =Convert.ToInt32(textBox2.Text);
-                 p1.Height = Convert.ToInt32(textBox1.Text);
+                p1.SizeMode = PictureBoxSizeMode.StretchImage;
+                p1.Width = Convert.ToInt32(textBox2.Text);
+                p1.Height = Convert.ToInt32(textBox1.Text);
 
-                 if (xzone < xhome && yzone < yhome)
-                 {
-                     if (x + p1.Width > panel3.Width)
-                     {
-                         y += p1.Height;
-                         yzone += p1.Height;
-                         x = 0;
-                     }
-                     p1.Location = new Point(x, y);
-                     x += p1.Width;
-                     xzone += p1.Width;
-                 }
-                 else
-                 {
-                     MessageBox.Show("vous avez depasser la surface limit");
-                 }
-                 panel3.Controls.Add(p1);
-                 panel3.AutoScroll = true;
-                 
- /*
-                 MySqlCommand cmd = Connection.getMySqlCommand();
-                 cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone)" +
-                     "VALUES(@nom_zone, @x_zone,@y_zone)";
-                 cmd.Parameters.AddWithValue("@nom_zone", comboBox2.Text);
-                 cmd.Parameters.AddWithValue("@x_zone", xzone);
-                 cmd.Parameters.AddWithValue("@y_zone", yzone);
-                 cmd.ExecuteNonQuery();*/
+                if (xzone < xhome && yzone < yhome)
+                {
+                    if (x + p1.Width > panel3.Width)
+                    {
+                        y += p1.Height;
+                        yzone += p1.Height;
+                        x = 0;
+                    }
+                    p1.Location = new Point(x, y);
+                    x += p1.Width;
+                    xzone += p1.Width;
+                }
+                else
+                {
+                    MessageBox.Show("vous avez depasser la surface limit");
+                }
+                panel3.Controls.Add(p1);
+                panel3.AutoScroll = true;
+
+
+
+                MySqlCommand cmd = Connection.getMySqlCommand();
+                cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone)" +
+                    "VALUES(@nom_zone, @x_zone,@y_zone)";
+                cmd.Parameters.AddWithValue("@nom_zone", comboBox2.Text);
+                cmd.Parameters.AddWithValue("@x_zone", xzone);
+                cmd.Parameters.AddWithValue("@y_zone", yzone);
+                cmd.ExecuteNonQuery();
 
             }
         }
 
         private void guna2CirclePictureBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            guna2CirclePictureBox2.BackColor = Color.Transparent;
-
+            panelN++;
             guna2CirclePictureBox2.DoDragDrop(guna2CirclePictureBox2.Image, DragDropEffects.Copy);
+            myControle.Name = string.Format("ac {0}", panelN);
         }
         private void guna2CirclePictureBox6_MouseDown(object sender, MouseEventArgs e)
         {
+            panelN++;
             guna2CirclePictureBox6.DoDragDrop(guna2CirclePictureBox6.Image, DragDropEffects.Copy);
+            myControle.Name = string.Format("door {0}", panelN);
+            //myControle.Location = new Point(e.X, e.Y);
+            //Point locationOnForm = myControle.FindForm().PointToClient(myControle.Parent.PointToScreen(myControle.Location));
+
 
         }
         private void guna2CirclePictureBox5_MouseDown(object sender, MouseEventArgs e)
         {
+            panelN++;
             guna2CirclePictureBox5.DoDragDrop(guna2CirclePictureBox5.Image, DragDropEffects.Copy);
+            myControle.Name = string.Format("frigde {0}", panelN);
 
         }
 
         private void guna2CirclePictureBox4_MouseDown(object sender, MouseEventArgs e)
         {
+            panelN++;
             guna2CirclePictureBox4.DoDragDrop(guna2CirclePictureBox4.Image, DragDropEffects.Copy);
+            myControle.Name = string.Format("lamp {0}", panelN);
 
         }
 
         private void guna2CirclePictureBox3_MouseDown(object sender, MouseEventArgs e)
         {
-            guna2CirclePictureBox3.BackColor = Color.Transparent;
+            panelN++;
             guna2CirclePictureBox3.DoDragDrop(guna2CirclePictureBox3.Image, DragDropEffects.Copy);
+            myControle.Name = string.Format("tv {0}", panelN);
 
         }
 
         private void guna2CirclePictureBox12_MouseDown(object sender, MouseEventArgs e)
         {
+            panelN++;
             guna2CirclePictureBox12.DoDragDrop(guna2CirclePictureBox12.Image, DragDropEffects.Copy);
+            myControle.Name = string.Format("router {0}", panelN);
+            
 
         }
         private void panel3_MouseDown(object sender, MouseEventArgs e)
         {
-            
+
         }
 
         private void panel3_DragEnter(object sender, DragEventArgs e)
@@ -720,6 +726,8 @@ namespace p2
             if (e.Data.GetDataPresent(DataFormats.Bitmap))
             {
                 e.Effect = DragDropEffects.Copy;
+                //myControle.Location = new Point(e.X, e.Y);
+                //Point locationOnForm = myControle.FindForm().PointToClient(myControle.Parent.PointToScreen(myControle.Location));
 
             }
         }
@@ -746,27 +754,95 @@ namespace p2
             myControle.BringToFront();
 
 
-            // panel3.BackgroundImage = getpic;
+
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-           
+
             getZone();
             guna2Panel1.Visible = false;
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
-            
+
         }
 
-     /*   private void panel3_MouseDown_1(object sender, MouseEventArgs e)
+        private void allumer_Click_1(object sender, EventArgs e)
         {
-            Panel pp = (Panel)sender;
-            pp.Select();
-            pp.DoDragDrop(((PictureBox)sender).Image, DragDropEffects.Copy);
+            DialogResult dialogClose = MessageBox.Show("Voullez-vous allumer !!", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialogClose == DialogResult.OK)
+            {
+                Eteindre.Enabled = true;
+                allumer.Enabled = false;
+                homeService.Modifier(int.Parse(b.Text), "A");
+                changeIcon(b, "A");
+            }
+        }
 
-        }*/
+        private void Eteindre_Click_1(object sender, EventArgs e)
+        {
+
+            DialogResult dialogClose = MessageBox.Show("Voullez-vous eteindre !!", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialogClose == DialogResult.OK)
+            {
+                Eteindre.Enabled = false;
+                allumer.Enabled = true;
+                homeService.Modifier(int.Parse(b.Text), "E");
+                changeIcon(b, "E");
+            }
+        }
+
+        /*   private void panel3_MouseDown_1(object sender, MouseEventArgs e)
+           {
+               Panel pp = (Panel)sender;
+               pp.Select();
+               pp.DoDragDrop(((PictureBox)sender).Image, DragDropEffects.Copy);
+
+           }*/
+
+        //--------------
+
+        //------------------------------
+        private void push_Click(object sender, EventArgs e)
+        {
+            String n = "";
+            Point locationOnForm = myControle.FindForm().PointToClient(myControle.Parent.PointToScreen(myControle.Location));
+
+            DialogResult dialogClose = MessageBox.Show("Voullez-vous ajouter " + myControle.Name, "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            if (dialogClose == DialogResult.OK)
+            {
+                MySqlCommand cmd = Connection.getMySqlCommand();
+                cmd.CommandText = "select * from zone";
+                /* MySqlDataReader rdr = cmd.ExecuteReader();
+
+                 while (rdr.Read())
+                 {
+                     if (locationOnForm.X > Convert.ToInt32(rdr["x_zone"]) && locationOnForm.X < Convert.ToInt32(rdr["x_zone"]) && locationOnForm.Y < Convert.ToInt32(rdr["y_zone"]))
+                     {
+                         n = Convert.ToString(rdr["nom_zone"]);
+                         break;
+                     }
+                 }*/
+
+                homeService.Ajouter(new home(myControle.Name, n, "E", panelN, locationOnForm.X - 1, locationOnForm.Y - 1));
+                // panel6.Visible = false;
+                guna2TextBox1.Text = locationOnForm.X.ToString()+"  "+ locationOnForm.Y.ToString();
+            }
+            else if (dialogClose == DialogResult.Cancel)
+            {
+                panel3.Controls.Remove(panels.Last());
+                panels.RemoveAt(panelN - 2);
+                panelN--;
+                // panel6.Visible = false;
+            }
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

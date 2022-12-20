@@ -56,6 +56,10 @@ namespace p2
             this.guna2CustomGradientPanel4 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
             this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.allumer = new System.Windows.Forms.Button();
+            this.Eteindre = new System.Windows.Forms.Button();
+            this.push = new System.Windows.Forms.Button();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel3.SuspendLayout();
             this.guna2Panel1.SuspendLayout();
             this.guna2CustomGradientPanel1.SuspendLayout();
@@ -186,6 +190,7 @@ namespace p2
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(62, 65);
             this.panel7.TabIndex = 0;
+            this.panel7.Paint += new System.Windows.Forms.PaintEventHandler(this.panel7_Paint);
             // 
             // guna2CustomGradientPanel1
             // 
@@ -424,12 +429,79 @@ namespace p2
             this.guna2Button1.TabIndex = 17;
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click_1);
             // 
+            // allumer
+            // 
+            this.allumer.BackColor = System.Drawing.Color.White;
+            this.allumer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.allumer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.allumer.ForeColor = System.Drawing.Color.White;
+            this.allumer.Image = global::p2.Properties.Resources.switch_on;
+            this.allumer.Location = new System.Drawing.Point(529, 56);
+            this.allumer.Margin = new System.Windows.Forms.Padding(2);
+            this.allumer.Name = "allumer";
+            this.allumer.Size = new System.Drawing.Size(81, 46);
+            this.allumer.TabIndex = 19;
+            this.allumer.UseVisualStyleBackColor = false;
+            this.allumer.Click += new System.EventHandler(this.allumer_Click_1);
+            // 
+            // Eteindre
+            // 
+            this.Eteindre.BackColor = System.Drawing.Color.White;
+            this.Eteindre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.Eteindre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Eteindre.ForeColor = System.Drawing.Color.White;
+            this.Eteindre.Image = global::p2.Properties.Resources.switch_off;
+            this.Eteindre.Location = new System.Drawing.Point(635, 56);
+            this.Eteindre.Margin = new System.Windows.Forms.Padding(2);
+            this.Eteindre.Name = "Eteindre";
+            this.Eteindre.Size = new System.Drawing.Size(80, 46);
+            this.Eteindre.TabIndex = 20;
+            this.Eteindre.UseVisualStyleBackColor = false;
+            this.Eteindre.Click += new System.EventHandler(this.Eteindre_Click_1);
+            // 
+            // push
+            // 
+            this.push.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.push.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.push.ForeColor = System.Drawing.Color.White;
+            this.push.Location = new System.Drawing.Point(11, 70);
+            this.push.Margin = new System.Windows.Forms.Padding(2);
+            this.push.Name = "push";
+            this.push.Size = new System.Drawing.Size(109, 32);
+            this.push.TabIndex = 21;
+            this.push.Text = "Enregistrer";
+            this.push.UseVisualStyleBackColor = false;
+            this.push.Click += new System.EventHandler(this.push_Click);
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Location = new System.Drawing.Point(378, 65);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PasswordChar = '\0';
+            this.guna2TextBox1.PlaceholderText = "";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(200, 36);
+            this.guna2TextBox1.TabIndex = 22;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1182, 637);
+            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.push);
+            this.Controls.Add(this.allumer);
+            this.Controls.Add(this.Eteindre);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.guna2CustomGradientPanel4);
@@ -492,6 +564,10 @@ namespace p2
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox2;
+        private System.Windows.Forms.Button allumer;
+        private System.Windows.Forms.Button Eteindre;
+        private System.Windows.Forms.Button push;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
     }
 }
 
