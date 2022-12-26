@@ -17,23 +17,23 @@ namespace p2
 
 
 
-        public Zone(int id, string nameZone, int xzone, int yzone, int location_y, int location_x)
+        public Zone(int id, string nameZone, int xzone, int yzone, int location_x,int location_y)
         {
             this.id = id;
             this.nameZone = nameZone;
             this.xzone = xzone;
             this.yzone = yzone;
-            this.Location_y = location_y;
             this.Location_x = location_x;
+            this.Location_y = location_y;
         }
 
-        public Zone( string nameZone, int xzone, int yzone, int location_y, int location_x)
+        public Zone( string nameZone, int xzone, int yzone, int location_x, int location_y)
         {
             this.nameZone = nameZone;
             this.xzone = xzone;
             this.yzone = yzone;
-            this.Location_y = location_y;
             this.Location_x = location_x;
+            this.Location_y = location_y;
         }
         public int Id { get => id; set => id = value; }
         public string NameZone { get => nameZone; set => nameZone = value; }

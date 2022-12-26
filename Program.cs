@@ -18,9 +18,9 @@ namespace p2
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             if (Connection.getSqlConnection() != null)
-                Application.Run(new Form1());
+                Application.Run(new Login());
             else
-                Console.WriteLine("Error Database");
+                Console.WriteLine("Problem de DataBase Database");
         }
     }
 }

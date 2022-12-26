@@ -3,8 +3,8 @@ using MySqlConnector;
 using p2.Services;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -13,7 +13,7 @@ namespace p2
     public partial class Form1 : Form
     {
         HomeService homeService = new HomeService();
-        ZoneService zoneService = new ZoneService();    
+        ZoneService zoneService = new ZoneService();
 
         Panel myControle;
         Panel b;
@@ -39,7 +39,7 @@ namespace p2
         public Form1()
         {
             InitializeComponent();
-            initExitSwitch();
+            //initExitSwitch();
             initCapt();
             initZone();
         }
@@ -52,7 +52,7 @@ namespace p2
             foreach (home item in homeList)
             {
                 myControle = new Panel();
-                myControle.Location = new Point(item.X- 79, item.Y-107);
+                myControle.Location = new Point(item.X - 79, item.Y - 107);
                 myControle.Size = new Size(64, 64);
                 myControle.Text = (panelN).ToString();
                 myControle.Name = item.Name;
@@ -73,19 +73,36 @@ namespace p2
         {
             int newy = 0;
             int newx = 0;
-            PictureBox pictureBox1 = new PictureBox();  
+            PictureBox pictureBox1 = new PictureBox();
             zoneList = ZoneService.afficher();
             foreach (Zone item in zoneList)
             {
+
                 pictureBox1 = new PictureBox();
                 pictureBox1.Size = new Size(item.Xzone, item.Yzone);
-                pictureBox1.Location = new Point(newy, item.Location_x);
-                //pictureBox1.Text = (panelN).ToString();
+
+                if (item.Location_y != 0)
+                {
+                    newy = item.Location_y;
+                    newx = 0;
+                    pictureBox1.Location = new Point(newx, newy);
+                }
+                else
+                {
+                    pictureBox1.Location = new Point(newx, newy);
+                    newx = +item.Xzone;
+
+                    // guna2TextBox1.Text =Convert.ToString(newx);
+                }
+
+                //guna2TextBox1.Text = Convert.ToString(item.Location_x);
                 pictureBox1.Name = item.NameZone;
+                //pictureBox1.Text = (panelN).ToString();
                 //myControle.BackColor = Color.Transparent;
                 //myControle.Click += b_Click;
                 //changeIcon(myControle, item.Status);
-                newx += item.Xzone;
+                //newx += item.Xzone;
+
 
                 switch (pictureBox1.Name)
                 {
@@ -106,6 +123,7 @@ namespace p2
                         break;
 
                 }
+                pictureBox1.Padding = new Padding(5, 5, 5, 5);
                 pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
                 panel3.AutoScroll = true;
                 // myControle.MouseDown += new MouseEventHandler(myContrl_MouseDown);
@@ -118,102 +136,115 @@ namespace p2
 
         }
 
-        private void initExitSwitch()
+        /* private void initExitSwitch()
+         {
+             panel7.Click += ExitSwitch;
+             homeService.killSwitch();
+             initZone();
+         }*/
+        private void ClearPanels()
         {
-            panel7.Click += ExitSwitch;
-            homeService.killSwitch();
+            DialogResult dialogClose = MessageBox.Show("voullez-vous vraiment effacer les objets!", "", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            if (dialogClose == DialogResult.OK)
+            {
+                panel3.Controls.Clear();
+                panels.Clear();
+                homeService.killSwitch();
+                initZone();
+
+            }
         }
 
-       /* private void button1_Click(object sender, EventArgs e)
-        {
-            panelN++;
-            myControle = new Panel();
-            /*    if (checkBox1.Checked)
-                {
-                    check = checkBox1;
-                    checkBox2.Checked = false;
-                    checkBox4.Checked = false;
-                    checkBox7.Checked = false;
-                    checkBox8.Checked = false;
-                    checkBox9.Checked = false;
-                    myControle.Name = string.Format("door {0}", panelN);
-                }
-                else if (checkBox2.Checked)
-                {
-                    check = checkBox2;
-                    checkBox1.Checked = false;
-                    checkBox4.Checked = false;
-                    checkBox7.Checked = false;
-                    checkBox8.Checked = false;
-                    checkBox9.Checked = false;
-                    myControle.Name = string.Format("frigde {0}", panelN);
-                }
-                else if (checkBox4.Checked)
-                {
-                    check = checkBox4;
-                    checkBox1.Checked = false;
-                    checkBox2.Checked = false;
-                    checkBox7.Checked = false;
-                    checkBox8.Checked = false;
-                    checkBox9.Checked = false;
-                    myControle.Name = string.Format("frigde {0}", panelN);
-                    myControle.Name = string.Format("lamp {0}", panelN);
-                }
-                else if (checkBox7.Checked)
-                {
-                    check = checkBox7;
-                    checkBox1.Checked = false;
-                    checkBox4.Checked = false;
-                    checkBox2.Checked = false;
-                    checkBox8.Checked = false;
-                    checkBox9.Checked = false;
-                    myControle.Name = string.Format("frigde {0}", panelN);
-                    myControle.Name = string.Format("lamp {0}", panelN);
-                    myControle.Name = string.Format("ac {0}", panelN);
-                }
-                else if (checkBox8.Checked)
-                {
-                    check = checkBox8;
-                    checkBox1.Checked = false;
-                    checkBox4.Checked = false;
-                    checkBox7.Checked = false;
-                    checkBox2.Checked = false;
-                    checkBox9.Checked = false;
-                    myControle.Name = string.Format("frigde {0}", panelN);
-                    myControle.Name = string.Format("lamp {0}", panelN);
-                    myControle.Name = string.Format("ac {0}", panelN);
-                    myControle.Name = string.Format("router {0}", panelN);
-                }
-                else if (checkBox9.Checked)
-                {
-                    check = checkBox9;
-                    checkBox1.Checked = false;
-                    checkBox4.Checked = false;
-                    checkBox7.Checked = false;
-                    checkBox8.Checked = false;
-                    checkBox9.Checked = false;
-                    myControle.Name = string.Format("frigde {0}", panelN);
-                    myControle.Name = string.Format("lamp {0}", panelN);
-                    myControle.Name = string.Format("ac {0}", panelN);
-                    myControle.Name = string.Format("router {0}", panelN);
-                    myControle.Name = string.Format("tv {0}", panelN);
-                }*/
-         /*   myControle.Location = new Point(300, 200);
-            myControle.Size = new Size(64, 64);
-            myControle.Text = (panelN).ToString();
-            myControle.Click += b_Click;
-            myControle.BackgroundImage = check.Image;
-            myControle.BackgroundImageLayout = ImageLayout.Stretch;
-            myControle.BackColor = Color.Transparent;
-            myControle.MouseDown += new MouseEventHandler(myContrl_MouseDown);
-            myControle.MouseMove += new MouseEventHandler(myContrl_MouseMove);
-            myControle.MouseUp += new MouseEventHandler(myContrl_MMouseUp);
-            panel3.Controls.Add(myControle);
-            panels.Add(myControle);
-            myControle.BringToFront();
-            //removeButton.Enabled = true;
+        /* private void button1_Click(object sender, EventArgs e)
+         {
+             panelN++;
+             myControle = new Panel();
+             /*    if (checkBox1.Checked)
+                 {
+                     check = checkBox1;
+                     checkBox2.Checked = false;
+                     checkBox4.Checked = false;
+                     checkBox7.Checked = false;
+                     checkBox8.Checked = false;
+                     checkBox9.Checked = false;
+                     myControle.Name = string.Format("door {0}", panelN);
+                 }
+                 else if (checkBox2.Checked)
+                 {
+                     check = checkBox2;
+                     checkBox1.Checked = false;
+                     checkBox4.Checked = false;
+                     checkBox7.Checked = false;
+                     checkBox8.Checked = false;
+                     checkBox9.Checked = false;
+                     myControle.Name = string.Format("frigde {0}", panelN);
+                 }
+                 else if (checkBox4.Checked)
+                 {
+                     check = checkBox4;
+                     checkBox1.Checked = false;
+                     checkBox2.Checked = false;
+                     checkBox7.Checked = false;
+                     checkBox8.Checked = false;
+                     checkBox9.Checked = false;
+                     myControle.Name = string.Format("frigde {0}", panelN);
+                     myControle.Name = string.Format("lamp {0}", panelN);
+                 }
+                 else if (checkBox7.Checked)
+                 {
+                     check = checkBox7;
+                     checkBox1.Checked = false;
+                     checkBox4.Checked = false;
+                     checkBox2.Checked = false;
+                     checkBox8.Checked = false;
+                     checkBox9.Checked = false;
+                     myControle.Name = string.Format("frigde {0}", panelN);
+                     myControle.Name = string.Format("lamp {0}", panelN);
+                     myControle.Name = string.Format("ac {0}", panelN);
+                 }
+                 else if (checkBox8.Checked)
+                 {
+                     check = checkBox8;
+                     checkBox1.Checked = false;
+                     checkBox4.Checked = false;
+                     checkBox7.Checked = false;
+                     checkBox2.Checked = false;
+                     checkBox9.Checked = false;
+                     myControle.Name = string.Format("frigde {0}", panelN);
+                     myControle.Name = string.Format("lamp {0}", panelN);
+                     myControle.Name = string.Format("ac {0}", panelN);
+                     myControle.Name = string.Format("router {0}", panelN);
+                 }
+                 else if (checkBox9.Checked)
+                 {
+                     check = checkBox9;
+                     checkBox1.Checked = false;
+                     checkBox4.Checked = false;
+                     checkBox7.Checked = false;
+                     checkBox8.Checked = false;
+                     checkBox9.Checked = false;
+                     myControle.Name = string.Format("frigde {0}", panelN);
+                     myControle.Name = string.Format("lamp {0}", panelN);
+                     myControle.Name = string.Format("ac {0}", panelN);
+                     myControle.Name = string.Format("router {0}", panelN);
+                     myControle.Name = string.Format("tv {0}", panelN);
+                 }*/
+        /*   myControle.Location = new Point(300, 200);
+           myControle.Size = new Size(64, 64);
+           myControle.Text = (panelN).ToString();
+           myControle.Click += b_Click;
+           myControle.BackgroundImage = check.Image;
+           myControle.BackgroundImageLayout = ImageLayout.Stretch;
+           myControle.BackColor = Color.Transparent;
+           myControle.MouseDown += new MouseEventHandler(myContrl_MouseDown);
+           myControle.MouseMove += new MouseEventHandler(myContrl_MouseMove);
+           myControle.MouseUp += new MouseEventHandler(myContrl_MMouseUp);
+           panel3.Controls.Add(myControle);
+           panels.Add(myControle);
+           myControle.BringToFront();
+           //removeButton.Enabled = true;
 
-        }*/
+       }*/
 
         void b_Click(object sender, EventArgs e)
         {
@@ -221,10 +252,10 @@ namespace p2
             if (b != null)
             {
                 bool exist = homeService.AfficherParIndex(int.Parse(b.Text));
-                 if (exist == false)
-                     push.Visible = true;
-                 else
-                     checkStatus(b);
+                if (exist == false)
+                    push.Visible = true;
+                else
+                    checkStatus(b);
             }
         }
 
@@ -388,19 +419,22 @@ namespace p2
             if (valeur.Contains("A"))
             {
                 if (b.Name.Contains("tv")) b.BackgroundImage = Properties.Resources.smart_tv;
-                else if (b.Name.Contains("door")) b.BackgroundImage = Properties.Resources.door__1_;
+                else if (b.Name.Contains("door")) b.BackgroundImage = Properties.Resources.door;
                 else if (b.Name.Contains("lamp")) b.BackgroundImage = Properties.Resources.light_bulb;
                 else if (b.Name.Contains("router")) b.BackgroundImage = Properties.Resources.wireless_router;
                 else if (b.Name.Contains("ac")) b.BackgroundImage = Properties.Resources.ac__1_;
+                else if (b.Name.Contains("fridge")) b.BackgroundImage = Properties.Resources.fridge;
             }
-            else
+            else 
             {
 
                 if (b.Name.Contains("tv")) b.BackgroundImage = Properties.Resources.smart_tv__1_;
-                else if (b.Name.Contains("door")) b.BackgroundImage = Properties.Resources.door;
+                else if (b.Name.Contains("door")) b.BackgroundImage = Properties.Resources.door__1_;
                 else if (b.Name.Contains("lamp")) b.BackgroundImage = Properties.Resources.light_bulb__2_;
                 else if (b.Name.Contains("router")) b.BackgroundImage = Properties.Resources.wireless_router__1_;
                 else if (b.Name.Contains("ac")) b.BackgroundImage = Properties.Resources.ac;
+                else if (b.Name.Contains("fridge")) b.BackgroundImage = Properties.Resources.fridge__1_;
+
             }
         }
         /*
@@ -714,9 +748,9 @@ namespace p2
                 cmd.CommandText = "INSERT INTO zone (nom_zone,x_zone,y_zone,location_x,location_y)" +
                     "VALUES(@nom_zone, @x_zone,@y_zone,@location_x,@location_y)";
                 cmd.Parameters.AddWithValue("@nom_zone", comboBox2.Text);
-                cmd.Parameters.AddWithValue("@x_zone",Convert.ToInt32(textBox2.Text));
-                cmd.Parameters.AddWithValue("@y_zone",Convert.ToInt32(textBox1.Text));
-                cmd.Parameters.AddWithValue("@location_x", x);
+                cmd.Parameters.AddWithValue("@x_zone", Convert.ToInt32(textBox2.Text));
+                cmd.Parameters.AddWithValue("@y_zone", Convert.ToInt32(textBox1.Text));
+                cmd.Parameters.AddWithValue("@location_x", x - p1.Width);
                 cmd.Parameters.AddWithValue("@location_y", y);
                 cmd.ExecuteNonQuery();
 
@@ -743,7 +777,7 @@ namespace p2
         {
             panelN++;
             guna2CirclePictureBox5.DoDragDrop(guna2CirclePictureBox5.Image, DragDropEffects.Copy);
-            myControle.Name = string.Format("frigde {0}", panelN);
+            myControle.Name = string.Format("fridge {0}", panelN);
 
         }
 
@@ -768,7 +802,7 @@ namespace p2
             panelN++;
             guna2CirclePictureBox12.DoDragDrop(guna2CirclePictureBox12.Image, DragDropEffects.Copy);
             myControle.Name = string.Format("router {0}", panelN);
-            
+
 
         }
         private void panel3_MouseDown(object sender, MouseEventArgs e)
@@ -857,7 +891,7 @@ namespace p2
 
            }*/
 
-        //--------------
+
 
         //------------------------------
         private void push_Click(object sender, EventArgs e)
@@ -871,20 +905,42 @@ namespace p2
             {
                 MySqlCommand cmd = Connection.getMySqlCommand();
                 cmd.CommandText = "select * from zone";
-                /* MySqlDataReader rdr = cmd.ExecuteReader();
+                MySqlDataAdapter DA = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                DA.Fill(dt);
 
-                 while (rdr.Read())
+                for (int i = 0; i < dt.Rows.Count+1 ; i++)
+                {
+                    if (myControle.Location.X > Convert.ToInt32(dt.Rows[i][4].ToString()) && myControle.Location.X < Convert.ToInt32(dt.Rows[i+1][4].ToString()))
+                    {
+                        n = Convert.ToString(dt.Rows[i][1]);
+                        break;
+                    }
+                    else
+                    {
+                        n = "invalide";
+                    }
+                }
+
+                /* while (rdr.Read())
                  {
-                     if (locationOnForm.X > Convert.ToInt32(rdr["x_zone"]) && locationOnForm.X < Convert.ToInt32(rdr["x_zone"]) && locationOnForm.Y < Convert.ToInt32(rdr["y_zone"]))
+                     if (locationOnForm.X-Convert.ToInt32(rdr["location_x"])<0 && locationOnForm.Y - Convert.ToInt32(rdr["location_y"])<0)
                      {
                          n = Convert.ToString(rdr["nom_zone"]);
-                         break;
-                     }
+                        break;
+                    }
+                    else
+                    {
+                        n = "invalide";
+                    }
                  }*/
+                // rdr.Close();
 
-                homeService.Ajouter(new home(myControle.Name, n, "E", panelN, locationOnForm.X - 1, locationOnForm.Y - 1));
+
+                homeService.Ajouter(new home(myControle.Name, n, "A", panelN, locationOnForm.X - 1, locationOnForm.Y - 1));
                 // panel6.Visible = false;
-                guna2TextBox1.Text = locationOnForm.X.ToString()+"  "+ locationOnForm.Y.ToString();
+                //guna2TextBox1.Text = locationOnForm.X.ToString()+"  "+ locationOnForm.Y.ToString();
+
             }
             else if (dialogClose == DialogResult.Cancel)
             {
@@ -893,10 +949,18 @@ namespace p2
                 panelN--;
                 push.Visible = false;
             }
+            push.Visible = false;
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
         {
+            // ExitSwitch();
+
+        }
+
+        private void guna2CirclePictureBox8_Click(object sender, EventArgs e)
+        {
+            ClearPanels();
 
         }
     }
